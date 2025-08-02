@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0A0A1A;
+  --foreground: #FFFFFF;
+  --card-background: #111122;
+  --card-border: #2A2A3A;
+  --primary: #8A7CFF;
+  --secondary: #45B7D1;
+  --accent: #6C6C8A;
+}
+
+@layer base {
+  body {
+    @apply bg-monad-dark text-monad-text-primary;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-monad-purple hover:bg-opacity-90 text-white font-medium py-2 px-4 rounded-md transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-monad-purple text-monad-purple hover:bg-monad-purple hover:bg-opacity-10 font-medium py-2 px-4 rounded-md transition-all duration-200;
+  }
+  
+  .card {
+    @apply bg-monad-card border border-monad-border rounded-xl shadow-card p-4;
+  }
+  
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-monad-gradient;
+  }
+  
+  .input-field {
+    @apply bg-monad-darker border border-monad-border text-monad-text-primary rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-monad-purple focus:border-transparent;
+  }
+}
+
+/* 隐藏滚动条但保持滚动功能 */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+/* 对于Firefox浏览器 */
+html {
+  scrollbar-width: none;
+}
+
+/* 对于IE和Edge */
+body {
+  -ms-overflow-style: none;
+}
+
+/* 波浪背景动画 */
+.wave-bg {
+  position: relative;
+  min-height: 100vh;
+}
+
+.wave-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(138, 124, 255, 0.1) 0%, rgba(10, 10, 26, 0) 70%);
+  z-index: -1;
+  opacity: 0.6;
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
